@@ -1,0 +1,1648 @@
+{
+  "schemaVersion": 1,
+  "platform": "tiktok",
+  "platformName": "TikTok",
+  "baseUrl": "https://api.socq.ai",
+  "creditUsd": 0.005,
+  "endpoints": [
+    {
+      "publicId": "tiktok/profiles",
+      "name": "TikTok Profiles API",
+      "description": "Retrieve normalized public TikTok profile identity, biography, account flags, and visible follower, following, video, and like counts by username.",
+      "method": "POST",
+      "path": "/v1/tiktok/profiles",
+      "payload": "payloads/profiles.json",
+      "launchedAt": "2026-07-16",
+      "price": "0.6 credits ($0.003) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.6,
+        "estimateResultCount": 1,
+        "estimateInputField": "usernames",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/profiles",
+      "landingUrl": "https://socq.ai/apis/tiktok/profiles",
+      "required": [
+        "usernames"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "usernames": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public account usernames."
+          }
+        },
+        "required": [
+          "usernames"
+        ]
+      }
+    },
+    {
+      "publicId": "tiktok/hashtags",
+      "name": "TikTok Hashtags API",
+      "description": "Collect normalized public TikTok videos for one or more hashtags, with creator, caption, engagement, media, sound, and matched-hashtag context.",
+      "method": "POST",
+      "path": "/v1/tiktok/hashtags",
+      "payload": "payloads/hashtags.json",
+      "launchedAt": "2026-07-16",
+      "price": "0.7 credits ($0.0035) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.7,
+        "estimateResultCount": 100,
+        "estimateResultCountPerInputField": "hashtags",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/hashtags",
+      "landingUrl": "https://socq.ai/apis/tiktok/hashtags",
+      "required": [
+        "hashtags"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "hashtags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Hashtags with or without the # prefix."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2000
+          }
+        },
+        "required": [
+          "hashtags"
+        ]
+      }
+    },
+    {
+      "publicId": "tiktok/comments",
+      "name": "TikTok Comments API",
+      "description": "Collect normalized publicly visible top-level TikTok comments from direct video URLs, including text, author context, likes, reply counts, mentions, and creator interaction flags.",
+      "method": "POST",
+      "path": "/v1/tiktok/comments",
+      "payload": "payloads/comments.json",
+      "launchedAt": "2026-07-16",
+      "price": "0.25 credits ($0.00125) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.25,
+        "estimateResultCount": 100,
+        "estimateResultCountPerInputField": "urls",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/comments",
+      "landingUrl": "https://socq.ai/apis/tiktok/comments",
+      "required": [
+        "urls"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2000
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      }
+    },
+    {
+      "publicId": "tiktok/videos",
+      "name": "TikTok Videos API",
+      "description": "Retrieve normalized public TikTok video metadata from direct video URLs, including creator, caption, engagement, cover references, hashtags, mentions, and sound details.",
+      "method": "POST",
+      "path": "/v1/tiktok/videos",
+      "payload": "payloads/videos.json",
+      "launchedAt": "2026-07-16",
+      "price": "0.7 credits ($0.0035) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.7,
+        "estimateResultCount": 1,
+        "estimateInputField": "urls",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/videos",
+      "landingUrl": "https://socq.ai/apis/tiktok/videos",
+      "required": [
+        "urls"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      }
+    },
+    {
+      "publicId": "tiktok/search",
+      "name": "TikTok Search API",
+      "description": "Search public TikTok videos by query and return normalized video records with supported relevance, date, likes, and publication-window filters.",
+      "method": "POST",
+      "path": "/v1/tiktok/search",
+      "payload": "payloads/search.json",
+      "launchedAt": "2026-07-16",
+      "price": "0.7 credits ($0.0035) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.7,
+        "estimateResultCount": 100,
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/search",
+      "landingUrl": "https://socq.ai/apis/tiktok/search",
+      "required": [
+        "query"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "published_within": {
+            "type": "string",
+            "minLength": 1
+          },
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Search query."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2000
+          },
+          "sort_by": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    },
+    {
+      "publicId": "tiktok/comment-replies",
+      "name": "TikTok Comment Replies API",
+      "description": "Collect public TikTok replies for one comment using a video URL and comment ID, returning text, authors, timestamps, engagement, and parent context as normalized records.",
+      "method": "POST",
+      "path": "/v1/tiktok/comment-replies",
+      "payload": "payloads/comment-replies.json",
+      "launchedAt": "2026-07-25",
+      "price": "0.5 credits ($0.0025) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.5,
+        "estimateResultCount": 100,
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/comment-replies",
+      "landingUrl": "https://socq.ai/apis/tiktok/comment-replies",
+      "required": [
+        "comment_id",
+        "url"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "comment_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A public comment identifier."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          },
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A public content or product URL."
+          }
+        },
+        "required": [
+          "comment_id",
+          "url"
+        ]
+      }
+    },
+    {
+      "publicId": "tiktok/followers-list",
+      "name": "TikTok Followers List API",
+      "description": "Collect normalized public profile records visible in the follower lists of one or more TikTok usernames, with source context and available public metrics.",
+      "method": "POST",
+      "path": "/v1/tiktok/followers-list",
+      "payload": "payloads/followers-list.json",
+      "launchedAt": "2026-07-25",
+      "price": "0.5 credits ($0.0025) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.5,
+        "estimateResultCount": 100,
+        "estimateResultCountPerInputField": "usernames",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/followers-list",
+      "landingUrl": "https://socq.ai/apis/tiktok/followers-list",
+      "required": [
+        "usernames"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          },
+          "usernames": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public account usernames."
+          }
+        },
+        "required": [
+          "usernames"
+        ]
+      }
+    },
+    {
+      "publicId": "tiktok/following-list",
+      "name": "TikTok Following List API",
+      "description": "Collect normalized public profiles followed by one or more TikTok usernames, including identity, biography, avatar, visible profile metrics, and source username.",
+      "method": "POST",
+      "path": "/v1/tiktok/following-list",
+      "payload": "payloads/following-list.json",
+      "launchedAt": "2026-07-25",
+      "price": "0.5 credits ($0.0025) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.5,
+        "estimateResultCount": 100,
+        "estimateResultCountPerInputField": "usernames",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/following-list",
+      "landingUrl": "https://socq.ai/apis/tiktok/following-list",
+      "required": [
+        "usernames"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          },
+          "usernames": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public account usernames."
+          }
+        },
+        "required": [
+          "usernames"
+        ]
+      }
+    },
+    {
+      "publicId": "tiktok/user-videos",
+      "name": "TikTok User Videos API",
+      "description": "Collect public TikTok videos from one or more usernames, returning captions, creators, media, timestamps, and visible engagement as normalized account-linked records.",
+      "method": "POST",
+      "path": "/v1/tiktok/user-videos",
+      "payload": "payloads/user-videos.json",
+      "launchedAt": "2026-07-25",
+      "price": "0.5 credits ($0.0025) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.5,
+        "estimateResultCount": 100,
+        "estimateResultCountPerInputField": "usernames",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/user-videos",
+      "landingUrl": "https://socq.ai/apis/tiktok/user-videos",
+      "required": [
+        "usernames"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "region": {
+            "type": "string",
+            "minLength": 1
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 20,
+            "maximum": 2000,
+            "default": 100
+          },
+          "sort_by": {
+            "type": "string",
+            "minLength": 1
+          },
+          "usernames": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public account usernames."
+          }
+        },
+        "required": [
+          "usernames"
+        ]
+      }
+    },
+    {
+      "publicId": "tiktok/live-room-info",
+      "name": "TikTok Live Room Info API",
+      "description": "Retrieve a point-in-time public TikTok live room snapshot from its room and owner IDs, including title, status, owner identity, cover image, viewer count, and like count.",
+      "method": "POST",
+      "path": "/v1/tiktok/live-room-info",
+      "payload": "payloads/live-room-info.json",
+      "launchedAt": "2026-07-27",
+      "price": "0.5 credits ($0.0025) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.5,
+        "estimateResultCount": 1,
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/live-room-info",
+      "landingUrl": "https://socq.ai/apis/tiktok/live-room-info",
+      "required": [
+        "room_id",
+        "user_id"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "room_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A public live room identifier."
+          },
+          "user_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A public account identifier."
+          }
+        },
+        "required": [
+          "room_id",
+          "user_id"
+        ]
+      }
+    },
+    {
+      "publicId": "tiktok/trending-feed",
+      "name": "TikTok Trending Feed API",
+      "description": "Collect the current public TikTok video feed for a region code, returning video IDs, captions, creators, cover images, timestamps, and visible engagement.",
+      "method": "POST",
+      "path": "/v1/tiktok/trending-feed",
+      "payload": "payloads/trending-feed.json",
+      "launchedAt": "2026-07-27",
+      "price": "0.7 credits ($0.0035) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.7,
+        "estimateResultCount": 100,
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/trending-feed",
+      "landingUrl": "https://socq.ai/apis/tiktok/trending-feed",
+      "required": [
+        "region"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "region": {
+            "type": "string",
+            "minLength": 1
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 4,
+            "maximum": 2000
+          }
+        },
+        "required": [
+          "region"
+        ]
+      }
+    },
+    {
+      "publicId": "tiktok/video-transcript",
+      "name": "TikTok Video Transcript API",
+      "description": "Extract transcripts from public TikTok video URLs with an optional language, returning text, language, format, source links, and collection time as normalized records.",
+      "method": "POST",
+      "path": "/v1/tiktok/video-transcript",
+      "payload": "payloads/video-transcript.json",
+      "launchedAt": "2026-07-27",
+      "price": "0.5 credits ($0.0025) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.5,
+        "estimateResultCount": 1,
+        "estimateInputField": "urls",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/video-transcript",
+      "landingUrl": "https://socq.ai/apis/tiktok/video-transcript",
+      "required": [
+        "urls"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "language": {
+            "type": "string",
+            "minLength": 1
+          },
+          "urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public profile or content URLs."
+          }
+        },
+        "required": [
+          "urls"
+        ]
+      }
+    },
+    {
+      "publicId": "tiktok/search-users",
+      "name": "TikTok Search Users API",
+      "description": "Search public TikTok creators and accounts by keyword, returning normalized identity, biography, account flags, and visible follower, following, and video counts.",
+      "method": "POST",
+      "path": "/v1/tiktok/search-users",
+      "payload": "payloads/search-users.json",
+      "launchedAt": "2026-09-11",
+      "price": "0.6 credits ($0.003) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.6,
+        "estimateResultCount": 100,
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/search-users",
+      "landingUrl": "https://socq.ai/apis/tiktok/search-users",
+      "required": [
+        "query"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Search query."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2000,
+            "default": 100
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    },
+    {
+      "publicId": "tiktok/song",
+      "name": "TikTok Song API",
+      "description": "Collect detailed public TikTok sound and music metadata by clip ID or sound URL, returning author, album, duration, audio links, and video usage count.",
+      "method": "POST",
+      "path": "/v1/tiktok/song",
+      "payload": "payloads/song.json",
+      "launchedAt": "2026-09-11",
+      "price": "0.5 credits ($0.0025) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.5,
+        "estimateResultCount": 1,
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/song",
+      "landingUrl": "https://socq.ai/apis/tiktok/song",
+      "required": [],
+      "requiredAnyOf": [
+        [
+          "music_id"
+        ],
+        [
+          "url"
+        ]
+      ],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "music_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "TikTok sound clip ID from a music URL."
+          },
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A public content or product URL."
+          }
+        },
+        "required": [],
+        "anyOf": [
+          {
+            "required": [
+              "music_id"
+            ]
+          },
+          {
+            "required": [
+              "url"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "publicId": "tiktok/song-videos",
+      "name": "TikTok Song Videos API",
+      "description": "Collect public TikTok videos that use a specific sound, returning normalized video metadata, creator details, captions, media links, and engagement counters.",
+      "method": "POST",
+      "path": "/v1/tiktok/song-videos",
+      "payload": "payloads/song-videos.json",
+      "launchedAt": "2026-09-11",
+      "price": "0.5 credits ($0.0025) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.5,
+        "estimateResultCount": 100,
+        "estimateResultCountPerInputField": "music_ids",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/song-videos",
+      "landingUrl": "https://socq.ai/apis/tiktok/song-videos",
+      "required": [
+        "music_ids"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "music_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "TikTok sound clip IDs from music URLs."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2000,
+            "default": 100
+          }
+        },
+        "required": [
+          "music_ids"
+        ]
+      }
+    },
+    {
+      "publicId": "tiktok/popular-songs",
+      "name": "TikTok Popular Songs API",
+      "description": "Get the TikTok Top 50 or Viral 50 songs chart, with track names, artists, sound IDs and available video counts to help you build a music list for review.",
+      "method": "POST",
+      "path": "/v1/tiktok/popular-songs",
+      "payload": "payloads/popular-songs.json",
+      "launchedAt": "2026-10-16",
+      "price": "0.5 credits ($0.0025) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.5,
+        "emptyResultPolicy": "base_only",
+        "estimateResultCount": 20
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/popular-songs",
+      "landingUrl": "https://socq.ai/apis/tiktok/popular-songs",
+      "required": [],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "chart_type": {
+            "type": "string",
+            "description": "TikTok App music chart: top for Top 50, viral for Viral 50.",
+            "enum": [
+              "top",
+              "viral"
+            ],
+            "default": "top"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50,
+            "default": 20
+          }
+        },
+        "required": [],
+        "description": "Choose the TikTok App Top 50 (top, default) or Viral 50 (viral) music chart. results_limit defaults to 20 and accepts integers from 1 to 50."
+      }
+    },
+    {
+      "publicId": "tiktok/top-search",
+      "name": "TikTok Top Search API",
+      "description": "Search TikTok videos and photo carousels by keyword, with captions, creator details, media links and engagement counts returned together in one JSON list.",
+      "method": "POST",
+      "path": "/v1/tiktok/top-search",
+      "payload": "payloads/top-search.json",
+      "launchedAt": "2026-10-16",
+      "price": "0.7 credits ($0.0035) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.7,
+        "emptyResultPolicy": "base_only",
+        "estimateResultCount": 100
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/top-search",
+      "landingUrl": "https://socq.ai/apis/tiktok/top-search",
+      "required": [
+        "query"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "published_within": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "day",
+              "month",
+              "six_months",
+              "three_months",
+              "week"
+            ]
+          },
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Search query."
+          },
+          "region": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[A-Za-z]{2}$"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2000,
+            "default": 100
+          },
+          "sort_by": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "date",
+              "likes",
+              "relevance"
+            ]
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "description": "query is required. results_limit defaults to 100. Results can contain videos and photo carousels; region changes content availability and does not guarantee geographic filtering."
+      }
+    },
+    {
+      "publicId": "tiktok/user-live",
+      "name": "TikTok User Live API",
+      "description": "Check whether public TikTok accounts are live by username, returning live or offline status and available room details for multiple accounts in one request.",
+      "method": "POST",
+      "path": "/v1/tiktok/user-live",
+      "payload": "payloads/user-live.json",
+      "launchedAt": "2026-10-16",
+      "price": "0.5 credits ($0.0025) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.5,
+        "emptyResultPolicy": "base_only",
+        "estimateInputField": "usernames"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/user-live",
+      "landingUrl": "https://socq.ai/apis/tiktok/user-live",
+      "required": [
+        "usernames"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "usernames": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Public account usernames."
+          }
+        },
+        "required": [
+          "usernames"
+        ],
+        "description": "Provide a non-empty usernames array. Each successful lookup returns one billable status, including is_live=false for offline accounts."
+      }
+    },
+    {
+      "publicId": "tiktok/user-audience",
+      "name": "TikTok Audience Demographics API",
+      "description": "Retrieve the country breakdown of a public TikTok account's followers by username, returning each country's name, ISO code, audience share, and sampled follower count.",
+      "method": "POST",
+      "path": "/v1/tiktok/user-audience",
+      "payload": "payloads/user-audience.json",
+      "launchedAt": "2026-11-17",
+      "price": "20 credits ($0.10) per call",
+      "billing": {
+        "baseCredits": 20,
+        "mode": "fixed"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/user-audience",
+      "landingUrl": "https://socq.ai/apis/tiktok/user-audience",
+      "required": [
+        "username"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "username": {
+            "type": "string",
+            "minLength": 1,
+            "description": "TikTok username, with or without the leading @.",
+            "pattern": "^@?[A-Za-z0-9_.]{2,24}$"
+          }
+        },
+        "required": [
+          "username"
+        ],
+        "description": "username is required. Returns one result with the countries the account's followers are located in, each with its share of the audience."
+      }
+    },
+    {
+      "publicId": "tiktok/similar-users",
+      "name": "TikTok Similar Accounts API",
+      "description": "Find public TikTok accounts that TikTok recommends as similar to a username, returning handles, display names, bios, follower and video counts, and verification status.",
+      "method": "POST",
+      "path": "/v1/tiktok/similar-users",
+      "payload": "payloads/similar-users.json",
+      "launchedAt": "2026-11-17",
+      "price": "0.5 credits ($0.0025) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.5,
+        "estimateResultCount": 30,
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/similar-users",
+      "landingUrl": "https://socq.ai/apis/tiktok/similar-users",
+      "required": [
+        "username"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 300,
+            "default": 30
+          },
+          "username": {
+            "type": "string",
+            "minLength": 1,
+            "description": "TikTok username, with or without the leading @.",
+            "pattern": "^@?[A-Za-z0-9_.]{2,24}$"
+          }
+        },
+        "required": [
+          "username"
+        ],
+        "description": "username is required. Returns accounts TikTok recommends as similar to it. results_limit defaults to 30 and accepts 1 to 300."
+      }
+    },
+    {
+      "publicId": "tiktok/user-reposts",
+      "name": "TikTok Reposts API",
+      "description": "Collect the videos a public TikTok account has reposted from its username, returning each video's caption, original author, views, likes, hashtags, and video file.",
+      "method": "POST",
+      "path": "/v1/tiktok/user-reposts",
+      "payload": "payloads/user-reposts.json",
+      "launchedAt": "2026-11-17",
+      "price": "0.5 credits ($0.0025) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.5,
+        "estimateResultCount": 20,
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/user-reposts",
+      "landingUrl": "https://socq.ai/apis/tiktok/user-reposts",
+      "required": [
+        "username"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500,
+            "default": 20
+          },
+          "username": {
+            "type": "string",
+            "minLength": 1,
+            "description": "TikTok username, with or without the leading @.",
+            "pattern": "^@?[A-Za-z0-9_.]{2,24}$"
+          }
+        },
+        "required": [
+          "username"
+        ],
+        "description": "username is required. Returns the videos the account has reposted, newest first. results_limit defaults to 20 and accepts 1 to 500."
+      }
+    },
+    {
+      "publicId": "tiktok/user-playlists",
+      "name": "TikTok Playlists API",
+      "description": "List the public playlists of a TikTok account by username, returning each playlist's ID, name, link, cover image, video count, and owner details.",
+      "method": "POST",
+      "path": "/v1/tiktok/user-playlists",
+      "payload": "payloads/user-playlists.json",
+      "launchedAt": "2026-11-17",
+      "price": "0.5 credits ($0.0025) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.5,
+        "estimateResultCount": 20,
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/user-playlists",
+      "landingUrl": "https://socq.ai/apis/tiktok/user-playlists",
+      "required": [
+        "username"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 20
+          },
+          "username": {
+            "type": "string",
+            "minLength": 1,
+            "description": "TikTok username, with or without the leading @.",
+            "pattern": "^@?[A-Za-z0-9_.]{2,24}$"
+          }
+        },
+        "required": [
+          "username"
+        ],
+        "description": "username is required. Returns the account's public playlists with their video counts. results_limit defaults to 20 and accepts 1 to 100."
+      }
+    },
+    {
+      "publicId": "tiktok/hashtag-detail",
+      "name": "TikTok Hashtag Views API",
+      "description": "Look up as many as 20 TikTok hashtags in one request, returning each hashtag's ID, link, total video count, and total views for side-by-side comparison.",
+      "method": "POST",
+      "path": "/v1/tiktok/hashtag-detail",
+      "payload": "payloads/hashtag-detail.json",
+      "launchedAt": "2026-11-17",
+      "price": "0.5 credits ($0.0025) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.5,
+        "estimateInputField": "hashtags",
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/hashtag-detail",
+      "landingUrl": "https://socq.ai/apis/tiktok/hashtag-detail",
+      "required": [
+        "hashtags"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "hashtags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "description": "Hashtag names with or without the # prefix, up to 20 per request.",
+            "maxItems": 20
+          }
+        },
+        "required": [
+          "hashtags"
+        ],
+        "description": "hashtags is required: 1 to 20 hashtag names. Returns one result per hashtag with its total video count and view count."
+      }
+    },
+    {
+      "publicId": "tiktok/search-music",
+      "name": "TikTok Sound Search API",
+      "description": "Search TikTok's sound library by keyword, returning sound IDs, titles, artists, cover art, durations, playable previews, and how many videos use each sound.",
+      "method": "POST",
+      "path": "/v1/tiktok/search-music",
+      "payload": "payloads/search-music.json",
+      "launchedAt": "2026-11-17",
+      "price": "0.6 credits ($0.003) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.6,
+        "estimateResultCount": 20,
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/search-music",
+      "landingUrl": "https://socq.ai/apis/tiktok/search-music",
+      "required": [
+        "query"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Song title, artist or sound name to search for."
+          },
+          "region": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[A-Za-z]{2}$",
+            "default": "US",
+            "description": "Two-letter country code of the TikTok market to search."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500,
+            "default": 20
+          },
+          "sort_by": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "latest",
+              "most_used",
+              "relevance"
+            ],
+            "default": "relevance",
+            "description": "Order of the results: relevance, most_used or latest."
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "description": "query is required. Returns sounds matching it; sort_by orders them by relevance (default), most_used or latest. results_limit defaults to 20 and accepts 1 to 500."
+      }
+    },
+    {
+      "publicId": "tiktok/search-live",
+      "name": "TikTok Live Search API",
+      "description": "Search TikTok LIVE streams broadcasting now by keyword, returning room IDs, stream titles, hosts, current viewers, likes, and start times, ready for product lookups.",
+      "method": "POST",
+      "path": "/v1/tiktok/search-live",
+      "payload": "payloads/search-live.json",
+      "launchedAt": "2026-11-17",
+      "price": "0.6 credits ($0.003) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.6,
+        "estimateResultCount": 20,
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/search-live",
+      "landingUrl": "https://socq.ai/apis/tiktok/search-live",
+      "required": [
+        "query"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Keyword to find LIVE streams for."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 200,
+            "default": 20
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "description": "query is required. Returns LIVE streams that are broadcasting now and match it, with their current viewers. results_limit defaults to 20 and accepts 1 to 200."
+      }
+    },
+    {
+      "publicId": "tiktok/search-photos",
+      "name": "TikTok Photo Search API",
+      "description": "Search TikTok photo carousel posts by keyword, returning every slideshow image along with captions, authors, hashtags, views, likes, comments, and shares.",
+      "method": "POST",
+      "path": "/v1/tiktok/search-photos",
+      "payload": "payloads/search-photos.json",
+      "launchedAt": "2026-11-17",
+      "price": "0.6 credits ($0.003) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.6,
+        "estimateResultCount": 20,
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/search-photos",
+      "landingUrl": "https://socq.ai/apis/tiktok/search-photos",
+      "required": [
+        "query"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Keyword to find photo posts for."
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500,
+            "default": 20
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "description": "query is required. Returns photo carousel posts matching it, with every image in the carousel. results_limit defaults to 20 and accepts 1 to 500."
+      }
+    },
+    {
+      "publicId": "tiktok/trending-keywords",
+      "name": "TikTok Trending Searches API",
+      "description": "Collect today's trending searches on TikTok in a single call, returning about 100 search phrases in TikTok's ranked order with a ready-made search link for each.",
+      "method": "POST",
+      "path": "/v1/tiktok/trending-keywords",
+      "payload": "payloads/trending-keywords.json",
+      "launchedAt": "2026-11-17",
+      "price": "0.5 credits ($0.0025) per call",
+      "billing": {
+        "baseCredits": 0.5,
+        "mode": "fixed"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/trending-keywords",
+      "landingUrl": "https://socq.ai/apis/tiktok/trending-keywords",
+      "required": [],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "required": [],
+        "description": "Takes no input. Returns today's trending search keywords on TikTok, in TikTok's order."
+      }
+    },
+    {
+      "publicId": "tiktok/search-insights",
+      "name": "TikTok Creator Search Insights API",
+      "description": "Retrieve popular TikTok searches from Creator Search Insights, returning each search's popularity score, seven-point trend, related video count, category, and labels.",
+      "method": "POST",
+      "path": "/v1/tiktok/search-insights",
+      "payload": "payloads/search-insights.json",
+      "launchedAt": "2026-11-17",
+      "price": "1 credit ($0.005) per call",
+      "billing": {
+        "baseCredits": 1,
+        "mode": "fixed"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/search-insights",
+      "landingUrl": "https://socq.ai/apis/tiktok/search-insights",
+      "required": [],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "category": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "fashion",
+              "food",
+              "gaming",
+              "science",
+              "sports",
+              "tourism"
+            ],
+            "description": "Limit the searches to one content category."
+          },
+          "filter_by": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "all",
+              "content_gap"
+            ],
+            "default": "all",
+            "description": "all for popular searches, or content_gap for searches that have few videos yet."
+          },
+          "language": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "ar",
+              "de",
+              "en",
+              "es",
+              "fr",
+              "id",
+              "ja",
+              "ko",
+              "pt",
+              "th",
+              "tr",
+              "vi"
+            ],
+            "default": "en",
+            "description": "Language of the searches to return."
+          }
+        },
+        "required": [],
+        "description": "All fields are optional. Returns 20 searches popular on TikTok, each with a popularity score, a seven-point trend and its video count; language, category and filter_by narrow them."
+      }
+    },
+    {
+      "publicId": "tiktok/live-ranking",
+      "name": "TikTok Live Ranking API",
+      "description": "Collect TikTok's LIVE daily creator ranking in one call, returning up to 99 hosts with their rank, gift-based score, username, display name, and follower count.",
+      "method": "POST",
+      "path": "/v1/tiktok/live-ranking",
+      "payload": "payloads/live-ranking.json",
+      "launchedAt": "2026-11-17",
+      "price": "0.5 credits ($0.0025) per call",
+      "billing": {
+        "baseCredits": 0.5,
+        "mode": "fixed"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/live-ranking",
+      "landingUrl": "https://socq.ai/apis/tiktok/live-ranking",
+      "required": [],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "required": [],
+        "description": "Takes no input. Returns TikTok's LIVE daily creator ranking, up to the top 99 creators with their scores."
+      }
+    },
+    {
+      "publicId": "tiktok/live-products",
+      "name": "TikTok Live Shopping API",
+      "description": "Collect the products in a TikTok LIVE stream's shopping bag from its room and host IDs, returning titles, current prices, units sold, seller IDs, and product images.",
+      "method": "POST",
+      "path": "/v1/tiktok/live-products",
+      "payload": "payloads/live-products.json",
+      "launchedAt": "2026-11-17",
+      "price": "0.1 credits ($0.0005) per result",
+      "billing": {
+        "baseCredits": 0,
+        "mode": "base_plus_result",
+        "resultUnitSize": 1,
+        "resultUnitCredits": 0.1,
+        "estimateResultCount": 100,
+        "emptyResultPolicy": "base_only"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/live-products",
+      "landingUrl": "https://socq.ai/apis/tiktok/live-products",
+      "required": [
+        "room_id",
+        "user_id"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "results_limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500,
+            "default": 100
+          },
+          "room_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Numeric ID of the LIVE room.",
+            "pattern": "^\\d{10,32}$"
+          },
+          "user_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Numeric TikTok user ID of the LIVE host.",
+            "pattern": "^\\d{5,32}$"
+          }
+        },
+        "required": [
+          "room_id",
+          "user_id"
+        ],
+        "description": "room_id and user_id are required; both come from TikTok Live Search results. Returns the products in the stream's shopping bag. results_limit defaults to 100 and accepts 1 to 500."
+      }
+    },
+    {
+      "publicId": "tiktok/fake-views",
+      "name": "TikTok Fake Views Checker API",
+      "description": "Check a public TikTok video URL for fake views, returning a fake-view score, estimated fake views and their share, the traffic tier reached, and the main reason found.",
+      "method": "POST",
+      "path": "/v1/tiktok/fake-views",
+      "payload": "payloads/fake-views.json",
+      "launchedAt": "2026-11-17",
+      "price": "5 credits ($0.025) per call",
+      "billing": {
+        "baseCredits": 5,
+        "mode": "fixed"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/fake-views",
+      "landingUrl": "https://socq.ai/apis/tiktok/fake-views",
+      "required": [
+        "url"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "category": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "education",
+              "entertainment",
+              "general",
+              "product",
+              "verified_large"
+            ],
+            "default": "general",
+            "description": "Content type used to pick engagement benchmarks: general, entertainment, education, product or verified_large."
+          },
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "TikTok video or photo post URL, such as https://www.tiktok.com/@user/video/1234567890123456789."
+          }
+        },
+        "required": [
+          "url"
+        ],
+        "description": "url is required. Returns one analysis with a fake-view score, the estimated share of inauthentic views and the traffic tier the video reached."
+      }
+    },
+    {
+      "publicId": "tiktok/comment-keywords",
+      "name": "TikTok Comment Keywords API",
+      "description": "Extract the keywords that come up most in a public TikTok video's comments from its URL, returning ranked keywords, each with the comments and likes behind it.",
+      "method": "POST",
+      "path": "/v1/tiktok/comment-keywords",
+      "payload": "payloads/comment-keywords.json",
+      "launchedAt": "2026-11-17",
+      "price": "1 credit ($0.005) per call",
+      "billing": {
+        "baseCredits": 1,
+        "mode": "fixed"
+      },
+      "docsUrl": "https://docs.socq.ai/api-manual/tiktok/comment-keywords",
+      "landingUrl": "https://socq.ai/apis/tiktok/comment-keywords",
+      "required": [
+        "url"
+      ],
+      "requiredAnyOf": [],
+      "mutuallyExclusive": [],
+      "requestSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "callback_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "TikTok video or photo post URL, such as https://www.tiktok.com/@user/video/1234567890123456789."
+          }
+        },
+        "required": [
+          "url"
+        ],
+        "description": "url is required. Returns the keywords that come up most in the video's comments, each with the comments that mention it."
+      }
+    }
+  ]
+}

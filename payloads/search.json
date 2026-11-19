@@ -1,0 +1,6 @@
+{
+  "query": "python tutorial",
+  "results_limit": 50,
+  "sort_by": "relevance",
+  "published_within": "month"
+}

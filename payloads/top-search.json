@@ -1,0 +1,5 @@
+{
+  "query": "coffee",
+  "sort_by": "relevance",
+  "results_limit": 20
+}
